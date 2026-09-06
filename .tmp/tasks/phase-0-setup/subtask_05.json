@@ -1,0 +1,34 @@
+{
+  "id": "phase-0-setup-05",
+  "seq": "05",
+  "title": "Create models for stock and transaction entities (Stock, StockMovement, Transaction, TransactionItem, TransactionPayment)",
+  "status": "completed",
+  "depends_on": [
+    "03"
+  ],
+  "parallel": true,
+  "suggested_agent": "CoderAgent",
+  "context_files": [
+    "app/facades/orm.go"
+  ],
+  "reference_files": [],
+  "acceptance_criteria": [
+    "Stock model with unique composite key (outlet_id, product_variant_id)",
+    "StockMovement model with type enum and reference_type/reference_id polymorphic fields",
+    "Transaction model with client_uuid unique idempotency key and status enum",
+    "TransactionItem model with product_name_snapshot and price_snapshot fields",
+    "TransactionPayment model with payment_method relation and change_amount",
+    "All models use Goravel orm conventions and are registered for migration/query"
+  ],
+  "deliverables": [
+    "app/models/stock.go",
+    "app/models/stock_movement.go",
+    "app/models/transaction.go",
+    "app/models/transaction_item.go",
+    "app/models/transaction_payment.go"
+  ],
+  "agent_id": null,
+  "started_at": null,
+  "completed_at": "2026-09-05T20:20:09.995Z",
+  "completion_summary": "Generated 5 models via make:model --table; added relations (Outlet/Variant/CreatedBy on stock, Transaction Cashier/Customer/Items/Payments, Item/Payment FKs); ORM queries verified"
+}

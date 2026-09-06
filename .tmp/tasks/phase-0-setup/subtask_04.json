@@ -1,0 +1,40 @@
+{
+  "id": "phase-0-setup-04",
+  "seq": "04",
+  "title": "Create models for reference entities (Outlet, User, Category, Product, ProductVariant, PaymentMethod, Customer)",
+  "status": "completed",
+  "depends_on": [
+    "02"
+  ],
+  "parallel": true,
+  "suggested_agent": "CoderAgent",
+  "context_files": [
+    "app/facades/orm.go"
+  ],
+  "reference_files": [
+    "app/http/controllers/user_controller.go"
+  ],
+  "acceptance_criteria": [
+    "Outlet model with fields matching outlets migration",
+    "User model with role enum and outlet_id relation",
+    "Category model with parent_id self-relation for sub-categories",
+    "Product model with category relation and is_variant flag",
+    "ProductVariant model with product relation",
+    "PaymentMethod model with code/name/is_active",
+    "Customer model with member_code and total_points",
+    "All models use Goravel orm conventions and are registered for migration/query"
+  ],
+  "deliverables": [
+    "app/models/outlet.go",
+    "app/models/user.go",
+    "app/models/category.go",
+    "app/models/product.go",
+    "app/models/product_variant.go",
+    "app/models/payment_method.go",
+    "app/models/customer.go"
+  ],
+  "agent_id": null,
+  "started_at": null,
+  "completed_at": "2026-09-05T20:13:28.482Z",
+  "completion_summary": "7 models via make:model --table (orm.Model+TableName); relations added (Outlet, Category self, Product variants); password json:\"-\"; ORM query verified"
+}

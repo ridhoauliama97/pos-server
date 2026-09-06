@@ -1,0 +1,31 @@
+{
+  "id": "phase-1-mvp-core-04",
+  "seq": "04",
+  "title": "Implement StockController for stock view and manual adjustment",
+  "status": "completed",
+  "depends_on": [
+    "03"
+  ],
+  "parallel": false,
+  "suggested_agent": "CoderAgent",
+  "context_files": [
+    "app/facades/orm.go"
+  ],
+  "reference_files": [],
+  "acceptance_criteria": [
+    "GET /api/v1/stocks lists stock per outlet with product info",
+    "GET /api/v1/stocks/{productVariantId} shows stock for a variant",
+    "POST /api/v1/stocks/adjust manually adjusts stock (Admin/Owner only)",
+    "Adjustment writes stock_movements with type 'adjustment' and note",
+    "Kasir has read-only stock access",
+    "Request validation via app/http/requests/StockAdjustRequest"
+  ],
+  "deliverables": [
+    "app/http/controllers/api/v1/stock_controller.go",
+    "app/http/requests/stock_adjust_request.go"
+  ],
+  "agent_id": null,
+  "started_at": null,
+  "completed_at": "2026-09-05T21:58:32.020Z",
+  "completion_summary": "StockController done: list/per-variant view w/ nested product+variant, adjust endpoint writes 'adjustment' ledger w/ note+created_by, kasir read-only. Policy updated. curl-verified."
+}

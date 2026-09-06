@@ -1,0 +1,37 @@
+{
+  "id": "phase-2-enhancements-06",
+  "seq": "06",
+  "title": "Write tests for customer flow, advanced reports, and idempotency hardening",
+  "status": "completed",
+  "depends_on": [
+    "05"
+  ],
+  "parallel": false,
+  "suggested_agent": "TestEngineer",
+  "context_files": [
+    "tests/test_case.go"
+  ],
+  "reference_files": [
+    "tests/feature/example_test.go"
+  ],
+  "acceptance_criteria": [
+    "Test customer CRUD and member_code generation",
+    "Test customer purchase history returns transactions with items",
+    "Test per-kasir report aggregates correctly",
+    "Test kasir sees only own shift report",
+    "Test duplicate client_uuid returns existing transaction (200)",
+    "Test concurrent same-uuid requests do not double-insert",
+    "Test bulk-sync skips existing client_uuids",
+    "Tests use Goravel testing conventions (tests/feature/)",
+    "All tests pass with go test"
+  ],
+  "deliverables": [
+    "tests/feature/customer_test.go",
+    "tests/feature/advanced_report_test.go",
+    "tests/feature/idempotency_test.go"
+  ],
+  "agent_id": null,
+  "started_at": null,
+  "completed_at": "2026-09-05T22:55:00.465Z",
+  "completion_summary": "Permanent suites: customer_test, advanced_report_test, idempotency_test (CRUD/member_code, history, per-kasir+shift scope, outlet filter, race x8, bulk-sync). 36/36 pass"
+}

@@ -1,0 +1,37 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: pos-postgres
+    environment:
+      POSTGRES_USER: pos
+      POSTGRES_PASSWORD: pos
+      POSTGRES_DB: pos
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pos -d pos"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  goravel:
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    restart: always
+    environment:
+      DB_CONNECTION: postgres
+      DB_HOST: postgres
+      DB_PORT: "5432"
+      DB_DATABASE: pos
+      DB_USERNAME: pos
+      DB_PASSWORD: pos
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres_data:

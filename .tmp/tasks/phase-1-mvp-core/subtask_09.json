@@ -1,0 +1,32 @@
+{
+  "id": "phase-1-mvp-core-09",
+  "seq": "09",
+  "title": "Implement ReportService and ReportController for basic sales reports",
+  "status": "completed",
+  "depends_on": [
+    "06"
+  ],
+  "parallel": true,
+  "suggested_agent": "CoderAgent",
+  "context_files": [
+    "app/facades/orm.go"
+  ],
+  "reference_files": [],
+  "acceptance_criteria": [
+    "GET /api/v1/reports/daily returns daily sales summary (date range filter)",
+    "GET /api/v1/reports/products returns sales per product (date range filter)",
+    "Reports aggregate from transactions with status 'completed'",
+    "Reports include totals (subtotal, discount, tax, total) and item counts",
+    "Admin/Owner can access all reports",
+    "Kasir can access own shift report only",
+    "ReportService contains query logic; ReportController handles HTTP"
+  ],
+  "deliverables": [
+    "app/services/report_service.go",
+    "app/http/controllers/api/v1/report_controller.go"
+  ],
+  "agent_id": null,
+  "started_at": null,
+  "completed_at": "2026-09-05T22:25:22.785Z",
+  "completion_summary": "ReportService+Controller: /reports/daily & /products, completed-only, date range, kasir self-scope; void excluded; 4/4 smoke"
+}

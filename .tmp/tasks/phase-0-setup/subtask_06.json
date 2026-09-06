@@ -1,0 +1,35 @@
+{
+  "id": "phase-0-setup-06",
+  "seq": "06",
+  "title": "Create seeders for default outlet, roles, admin user, and cash payment method",
+  "status": "completed",
+  "depends_on": [
+    "04",
+    "05"
+  ],
+  "parallel": false,
+  "suggested_agent": "CoderAgent",
+  "context_files": [
+    "app/facades/seeder.go",
+    "app/facades/orm.go"
+  ],
+  "reference_files": [],
+  "acceptance_criteria": [
+    "Seed 1 default outlet (is_active=true)",
+    "Seed default roles owner/admin/kasir",
+    "Seed 1 admin user with hashed password",
+    "Seed 1 payment_methods row with code 'cash'",
+    "Seeders idempotent (safe to re-run)",
+    "Seeders run via Goravel artisan db:seed"
+  ],
+  "deliverables": [
+    "database/seeders/outlet_seeder.go",
+    "database/seeders/user_seeder.go",
+    "database/seeders/payment_method_seeder.go",
+    "database/seeders/database_seeder.go"
+  ],
+  "agent_id": null,
+  "started_at": null,
+  "completed_at": "2026-09-05T20:36:17.187Z",
+  "completion_summary": "Seeders for outlet/user/payment_method + DatabaseSeeder aggregator; idempotent via FirstOrCreate + email check; bcrypt admin pw; ran db:seed 2x verified"
+}

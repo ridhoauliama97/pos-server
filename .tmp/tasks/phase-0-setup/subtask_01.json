@@ -1,0 +1,32 @@
+{
+  "id": "phase-0-setup-01",
+  "seq": "01",
+  "title": "Wire PostgreSQL Docker environment and verify DB connectivity",
+  "status": "completed",
+  "depends_on": [],
+  "parallel": false,
+  "suggested_agent": "CoderAgent",
+  "context_files": [
+    "docker-compose.yml",
+    ".env.example",
+    "config/database.go"
+  ],
+  "reference_files": [
+    "database/migrations/20210101000001_create_jobs_table.go"
+  ],
+  "acceptance_criteria": [
+    "docker-compose up starts postgres:16-alpine successfully",
+    "DB connection from Goravel to postgres succeeds (DB_CONNECTION=postgres)",
+    "Existing migrations run without error via Goravel artisan migrate",
+    "Healthcheck confirms postgres is ready before goravel starts"
+  ],
+  "deliverables": [
+    "docker-compose.yml (verified/updated)",
+    ".env (verified DB_* values)",
+    "config/database.go (verified postgres driver config)"
+  ],
+  "agent_id": null,
+  "started_at": null,
+  "completed_at": "2026-09-05T19:39:00.703Z",
+  "completion_summary": "Postgres:16-alpine up + healthy in docker-compose, goravel depends_on healthcheck; DB connection OK, jobs/failed_jobs migrations ran via artisan migrate"
+}

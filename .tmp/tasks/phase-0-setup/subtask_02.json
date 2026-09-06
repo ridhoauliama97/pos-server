@@ -1,0 +1,39 @@
+{
+  "id": "phase-0-setup-02",
+  "seq": "02",
+  "title": "Create migrations for core reference tables (outlets, users, categories, products, product_variants, payment_methods, customers)",
+  "status": "completed",
+  "depends_on": [
+    "01"
+  ],
+  "parallel": false,
+  "suggested_agent": "CoderAgent",
+  "context_files": [
+    "database/migrations/20210101000001_create_jobs_table.go"
+  ],
+  "reference_files": [],
+  "acceptance_criteria": [
+    "outlets table: id, name, address, phone, is_active, timestamps",
+    "users table: id, outlet_id (nullable), name, email, password, role enum(owner|admin|kasir), is_active",
+    "categories table: id, name, parent_id (nullable)",
+    "products table: id, category_id, name, sku, barcode, unit, is_variant, base_price, is_active",
+    "product_variants table: id, product_id, name, sku_variant, barcode_variant, price",
+    "payment_methods table: id, code, name, is_active",
+    "customers table: id, name, phone, email, member_code, total_points",
+    "All tables multi-outlet-ready where relevant (outlet_id present)",
+    "Migrations run cleanly via Goravel artisan migrate"
+  ],
+  "deliverables": [
+    "database/migrations/20260906000001_create_outlets_table.go",
+    "database/migrations/20260906000002_create_users_table.go",
+    "database/migrations/20260906000003_create_categories_table.go",
+    "database/migrations/20260906000004_create_products_table.go",
+    "database/migrations/20260906000005_create_product_variants_table.go",
+    "database/migrations/20260906000006_create_payment_methods_table.go",
+    "database/migrations/20260906000007_create_customers_table.go"
+  ],
+  "agent_id": null,
+  "started_at": null,
+  "completed_at": "2026-09-05T19:42:57.976Z",
+  "completion_summary": "7 migrations (outlets/users/categories/products/product_variants/payment_methods/customers) w/ FK+unique+role enum, registered + ran cleanly"
+}

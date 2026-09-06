@@ -1,0 +1,31 @@
+{
+  "id": "phase-2-enhancements-03",
+  "seq": "03",
+  "title": "Implement advanced reports (per kasir, per shift, per product)",
+  "status": "completed",
+  "depends_on": [],
+  "parallel": true,
+  "suggested_agent": "CoderAgent",
+  "context_files": [
+    "app/facades/orm.go"
+  ],
+  "reference_files": [
+    "app/services/report_service.go"
+  ],
+  "acceptance_criteria": [
+    "GET /api/v1/reports/kasir returns sales grouped by cashier (date range filter)",
+    "GET /api/v1/reports/shift returns shift report for a kasir (kasir sees own only)",
+    "GET /api/v1/reports/products returns per-product sales with quantity and revenue",
+    "Reports filter by outlet_id",
+    "Reports aggregate only status 'completed' transactions",
+    "Admin/Owner see all kasir reports; Kasir sees own shift report only"
+  ],
+  "deliverables": [
+    "app/services/report_service.go (advanced report methods)",
+    "app/http/controllers/api/v1/report_controller.go (advanced handlers)"
+  ],
+  "agent_id": null,
+  "started_at": null,
+  "completed_at": "2026-09-05T22:47:09.411Z",
+  "completion_summary": "Adv reports: ByCashier (group by cashier), Shift (per-day, kasir own-only, kasir_id req for admin), Products+Daily outlet_id filter; completed-only; 4/4 smoke"
+}

@@ -1,0 +1,36 @@
+{
+  "id": "phase-0-setup-03",
+  "seq": "03",
+  "title": "Create migrations for stock and transaction tables (stocks, stock_movements, transactions, transaction_items, transaction_payments)",
+  "status": "completed",
+  "depends_on": [
+    "02"
+  ],
+  "parallel": false,
+  "suggested_agent": "CoderAgent",
+  "context_files": [
+    "database/migrations/20210101000001_create_jobs_table.go"
+  ],
+  "reference_files": [],
+  "acceptance_criteria": [
+    "stocks table: id, outlet_id, product_variant_id, quantity, min_stock_alert, unique(outlet_id, product_variant_id)",
+    "stock_movements table: id, outlet_id, product_variant_id, type enum(in|out|adjustment|sale|return), quantity, reference_type, reference_id, note, created_by, created_at",
+    "transactions table: id, client_uuid (unique idempotency key), outlet_id, cashier_id, customer_id (nullable), invoice_number, subtotal, discount, tax, total, status enum(completed|voided|refunded), client_created_at, created_at",
+    "transaction_items table: id, transaction_id, product_variant_id, product_name_snapshot, price_snapshot, quantity, subtotal",
+    "transaction_payments table: id, transaction_id, payment_method_id, amount, change_amount, paid_at",
+    "client_uuid has a unique constraint for idempotency",
+    "All tables multi-outlet-ready with outlet_id",
+    "Migrations run cleanly via Goravel artisan migrate"
+  ],
+  "deliverables": [
+    "database/migrations/20260906000008_create_stocks_table.go",
+    "database/migrations/20260906000009_create_stock_movements_table.go",
+    "database/migrations/20260906000010_create_transactions_table.go",
+    "database/migrations/20260906000011_create_transaction_items_table.go",
+    "database/migrations/20260906000012_create_transaction_payments_table.go"
+  ],
+  "agent_id": null,
+  "started_at": null,
+  "completed_at": "2026-09-05T19:46:11.726Z",
+  "completion_summary": "5 migrations (stocks, stock_movements, transactions, transaction_items, transaction_payments) with unique client_uuid, composite stock unique, FK chains, status/type enums - ran cleanly"
+}
