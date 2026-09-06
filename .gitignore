@@ -1,8 +1,26 @@
+# IDE / OS
 .idea
 .vscode
 .DS_Store
+
+# Environment
 .env
 .env.*
 !.env.example
+
+# Runtime
 storage
 tmp
+
+# Dev tooling metadata (regenerated locally, not needed in CI)
+graphify-out/
+.tmp/
+
+# Go build / test artifacts
+bin/
+dist/
+*.exe
+*.test
+*.out
+coverage.out
+coverage.html
